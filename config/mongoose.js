@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://127.0.0.1/Movies_Project')
+mongoose.connect('mongodb+srv://utsavgarchar:utsavgarchar63@cluster0.wpvtcvx.mongodb.net')
 const db = mongoose.connection
 db.once('open',(err)=>{
      if(err){
