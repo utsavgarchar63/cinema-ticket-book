@@ -1,0 +1,77 @@
+<%-include('header')%>
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <br>
+            <br>
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <!-- Basic Bootstrap Table -->
+              
+              <div class="card pt-5">
+              
+                  <% if(flash.success && flash.success.length> 0 ) { %>
+                    <div class="alert alert-success">
+                         <%= flash.success %>
+                    </div>
+                    <% } %>
+                    <form
+                    class="mx-5 d-none border rounded d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                         <input type="text" name="search" class="form-control bg-light border-0 small"
+                              placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                         <div class="input-group-append">
+                              <button class="btn btn-primary" type="submit">
+                                   <i class="fas bx bx-search fa-sm"></i>
+                              </button>
+                         </div>
+                    </div>
+               </form>
+               <br>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th>Year</th>
+                        <th>Language</th>
+                        <th>Genre</th>
+                        <th>Country</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      <%for(var i of movies){%>
+                      <tr>
+                        <td>
+                          <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong><%=i.title%></strong>
+                        </td>
+                        <td><%=i.year%></td>
+                        <td><%=i.language%></td>
+                        <td><span class="badge bg-label-warning me-1"><%=i.genre%></span></td>
+                        <td><%=i.country%></td>
+                        <td>
+                          <a href="/movies/delete_movie/<%=i.id%>" class="btn btn-danger">Delete</a>
+                          <a href="/movies/update_movie/<%=i.id%>" class="btn btn-primary">Update</a>
+                        </td>
+                      </tr>
+                      <%}%>
+                      
+                    </tbody>
+                  </table>
+                  <ul class="pagination pagination-lg p-3">
+                    <li class="page-item prev">
+                      <a class="page-link" href="?page=<%= prev %>&search=<%= searchData %>"><i class="tf-icon bx bx-chevrons-left"></i></a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="?page=<%= curr %>&search=<%= searchData %>"><%=curr%></a>
+                    </li>
+
+                    <li class="page-item next">
+                      <a class="page-link" href="?page=<%= next %>&search=<%= searchData %>"><i class="tf-icon bx bx-chevrons-right"></i></a>
+                    </li>
+                  </ul>
+              </div>
+              <br>
+              <br>
+<%-include('footer')%>

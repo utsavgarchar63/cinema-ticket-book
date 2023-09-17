@@ -1,0 +1,400 @@
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+
+  :root {
+    --primary-light: #fff;
+    --primary-blue: #000000;
+    --primary-dark-blue: #252835;
+    --secondary-blue: #ff4444;
+    --secondary-gray: #85878f;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(--primary-blue);
+    color: var(--primary-light);
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+  }
+
+  .container {
+    margin-top: 3rem;
+    perspective: 1000px;
+  }
+
+  /* movie selection section */
+
+  .movie-ticket {
+    background: var(--primary-dark-blue);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .movie-ticket>p {
+    font-weight: 400;
+  }
+
+  select {
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 0 0.5rem 1rem;
+    appearance: none;
+    border: none;
+    width: 60%;
+    font-size: 20x;
+  }
+
+  /* seat availability information section */
+
+  .seat__availability {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+  }
+
+  .seat__info {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .seat {
+    border: 2px solid var(--secondary-blue);
+    border-radius: 5px;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .seat-taken {
+    background: var(--secondary-blue);
+  }
+
+  .seat:not(.seat-taken):hover {
+    transform: scale(1.1);
+  }
+
+  .seat__info .seat:hover {
+    transform: none;
+  }
+
+  .seat-selected {
+    border: 2px solid var(--primary-light);
+    background: var(--primary-light);
+  }
+
+  .screen {
+    width: 65%;
+    height: 5rem;
+    background: var(--secondary-blue);
+    margin: 2rem auto;
+    transform: rotateX(-45deg);
+    box-shadow: 0px 6px 20px var(--secondary-blue);
+  }
+
+  /* seat arrangement section */
+
+  .seat__arrangement {
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+  }
+
+  .row {
+    display: flex;
+    gap: 0.5rem;
+    margin: auto;
+  }
+
+  .row:nth-of-type(5) {
+    margin-bottom: 1rem;
+  }
+
+  .seat:nth-of-type(5) {
+    margin-right: 1rem;
+  }
+
+  .seat-hidden {
+    visibility: hidden;
+  }
+
+  /* booking details section */
+
+  .booking__details {
+    margin-top: 1rem;
+    background: var(--primary-dark-blue);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    gap: 1rem;
+    font-weight: 400;
+    border-radius: 1rem;
+  }
+
+  .booking__cost {
+    font-weight: 400;
+  }
+
+  .booking__cost p:nth-of-type(2) {
+    margin-top: 0.5rem;
+  }
+
+  .booking__details a {
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 30px;
+    background: var(--secondary-blue);
+    color: var(--primary-light);
+    font-size: 15px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    outline: none;
+
+    transition: ease 0.5s;
+  }
+
+  .booking__details button {
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 30px;
+    background: var(--secondary-blue);
+    color: var(--primary-light);
+    font-size: 15px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    outline: none;
+    transition: ease 0.5s;
+  }
+
+  .booking__details button:hover {
+    transform: scale(1.05);
+  }
+</style>
+
+<div style="display: flex; align-items: center;">
+  <div class="container">
+    <div class="movie-ticket">
+      <select name="movie" id="movie">
+        <option value="<%=show.show_price%>" selected>
+          <%=show.movieId.title%>
+        </option>
+      </select>
+    </div>
+
+    <div class="seat__availability">
+      <div class="seat__info">
+        <div class="seat seat-infoStyle"></div>
+        <div class="seat-type-name">Available</div>
+      </div>
+      <div class="seat__info">
+        <div class="seat seat-infoStyle seat-taken"></div>
+        <div class="seat-type-name">Taken</div>
+      </div>
+      <div class="seat__info">
+        <div class="seat seat-infoStyle seat-selected"></div>
+        <div class="seat-type-name">Selected</div>
+      </div>
+    </div>
+    <div class="screen"></div>
+    <div class="seat__arrangement d-flex">
+
+      <div class="row">
+        <div class="seat seat-hidden"></div>
+        <div class="seat seat-hidden"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat seat-hidden"></div>
+        <div class="seat seat-hidden"></div>
+      </div>
+      <div class="row">
+        <div class="seat seat-hidden"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat seat-hidden"></div>
+      </div>
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+      </div>
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+      </div>
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat"></div>
+      </div>
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+      </div>
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat"></div>
+      </div>
+      <div class="row">
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat"></div>
+      </div>
+      <div class="row">
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+      </div>
+      <div class="row">
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+        <div class="seat seat-taken"></div>
+      </div>
+    </div>
+  </div>
+  <form action="/bookSheets" method="post" style="margin: 20px;">
+    <input type="hidden" name="planId" value="<%= show.id %>">
+    <div class="booking__details" style="padding: 30px;">
+      <div class="booking__cost">
+        <p>Seats Selected : <span class="seat__count"></span></p>
+        <p>Total Cost : ₹<span class="total__cost"></span></p>
+        <div style="margin: 15px 0 ; display: flex; align-items: center;">
+          <label for="">Email</label>
+          <input type="email" name="email"
+            style="background-color: transparent; border-radius: 5px; color: white; border-bottom: 2px solid #ff4444; padding: 5px; margin:0 10px;"
+            id="">
+        </div>
+        <div style="margin: 15px 0 ; display: flex; align-items: center;">
+          <label for="">Phone No</label>
+          <input type="text" name="phone"
+            style="background-color: transparent; border-radius: 5px; color: white; border-bottom: 2px solid #ff4444; padding: 5px; margin:0 10px;"
+            id="">
+        </div>
+        <input type="hidden" value="" class="seat__input" name="sheets" id="">
+        <input type="hidden" value="" class="total__input" name="total" id="">
+        <br>
+        <button type="submit">Pay Now</button>
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+  const seatArrangement = document.querySelector('.seat__arrangement');
+  const seatCount = document.querySelector('.seat__count');
+  const seatInput = document.querySelector('.seat__input');
+  const totalCost = document.querySelector('.total__cost');
+  const totalInput = document.querySelector('.total__input');
+  const select = document.querySelector('select');
+  let seatCost = select.value;
+  let count;
+
+  // Updates Booking Details
+  const updateBookingDetails = () => {
+    let seatsSelected = document.querySelectorAll('div.row .seat-selected');
+    count = seatsSelected.length;
+    seatCount.innerText = count;
+    seatInput.value = count
+    totalCost.innerText = count * seatCost;
+    totalInput.value = count * seatCost
+  }
+
+  // Event Listner
+  // Selects or unselects a seat in seat arrangement
+  // Counts the seats selected
+  seatArrangement.addEventListener('click', (e) => {
+    if (e.target.classList.contains('seat') && !e.target.classList.contains('seat-taken') && !e.target.classList.contains('seat-infoStyle')) {
+      e.target.classList.toggle('seat-selected');
+      updateBookingDetails();
+    }
+  });
+
+  // Sets the seat cost on change of movie select options
+  select.addEventListener('change', () => {
+    seatCost = document.querySelector('select').value;
+    updateBookingDetails();
+  });
+
+
+
+
+</script>

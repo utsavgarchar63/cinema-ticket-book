@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Entertain Pro</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/global.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?bxmily=Lato&display=swap" rel="stylesheet">
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet"> -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+</head>
+    
+<style>
+    body{
+        background-color: #000;
+    }
+    li{
+        list-style: none;
+    }
+    .box{
+        border: 2px solid #fff;
+        border-radius: 20px;
+        transition: 0.4s all;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .box:hover{
+        background-color: #DF0E62;
+        color: #000;
+        border-color: #DF0E62;
+    }
+    .box p{
+        font-weight: 800;
+    }
+</style>
+<section id="header">
+    <div id="signup-modal" class="modal bxde" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            
+        </div><!-- /.modal-dialog -->
+    </div>
+    <nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-4 p-0 fw-bold text-white text-uppercase" href="index.html"><i
+                    class="bx bx-video-camera me-1 col_light fs-1 align-middle"></i> Entertain Pro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="bxlse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="bxlse">
+                            Blog
+                        </a>
+                        <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="blog.html"> Blog</a></li>
+                            <li><a class="dropdown-item border-0" href="blog_detail.html"> Blog Detail</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="event.html">Events</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html">team</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav mb-0 ms-auto">
+
+                    <li class="nav-item">
+                        <select  name="categories" class="form-select bg-light" required="">
+                            <option value="">All Categories</option>
+                            <option>Movie</option>
+                            <option>Video</option>
+                            <option>Tv-Show</option>
+                            <option>Music</option>
+                        </select>
+
+                        <div class="input-group " >
+                            <input type="text" style="border-radius:0 10px 10px 0;" class="form-control border-start-0" placeholder="Search Movie">
+                        </div>
+                    </li>
+
+                   
+                    <!-- /.modal -->
+                </ul>
+                
+
+    </nav>
+</section>
+<div class="container py-5 my-5">
+    <div class="pt-5">
+        <h1 class="text-white display-4" style="letter-spacing: 8px; font-weight: 800;"><%=movie.title%>(<%=movie.language%>)</h1>
+        <h5 class="mt-2" style="font-size: 26px; margin-bottom: 10px; color: #df0e62; font-weight: 700;"></h5>
+    </div>
+    <% for(var i=0; i < movie_mall.mallId.length ; i++) { %>
+        <div class="row align-items-center justify-content-between p-4 my-5" style="background: #242c38; border-radius: 20px;">
+            <div class="col-lg-3">
+                <h4 href="#" class="text-light  px-3 text-uppercase"><%=movie_mall.mallId[i].mall%></h4>
+                <ul class="list-none d-flex">
+                    <li><a href="#" class="px-3" style="font-size: 14px; color: #fff;">M-Ticket</a></li>
+                    <li><a href="#" class="px-3" style="font-size: 14px; color: #fff;">Food & Beverage</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-1"><a href="#" class="text-white"><i class="fa fa-info"></i> Info</a></div>
+            <div class="d-flex col-lg-8">
+                <% for(var j of plan) { if(movie_mall.mallId[i].id == j.mallId.id) { %>
+                    <a href="/bookShow/<%= j.id %>" class="text-light box p-2 px-5 mx-3">
+
+                        <p><%= j.show_time %> </p>
+                        <p><%= j.show_price %> ₹</p>
+                    </a>
+                <% }} %>
+            </div>
+        </div>
+        <%}%>
+</div>

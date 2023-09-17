@@ -1,0 +1,109 @@
+<%-include('header')%>
+
+
+     <!-- / Navbar -->
+
+     <!-- Content wrapper -->
+     <div class="content-wrapper">
+          <!-- Content -->
+               <div class="container-xxl flex-grow-1 container-p-y">
+                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Add Movies</h4>
+
+                    <!-- Basic Layout & Basic with Icons -->
+                    <div class="row">
+                         <!-- Basic Layout -->
+                         <div class="col-xxl">
+                              <div class="card mb-4">
+                                   <div class="card-header d-flex align-items-center justify-content-between">
+                                   </div>
+                                   <div class="card-body">
+                                        <% if(flash.success && flash.success.length> 0 ) { %>
+                                             <div class="alert alert-success">
+                                                  <%= flash.success %>
+                                             </div>
+                                             <% } %>
+                                                  <form action="/plan/insert_plan" method="post">
+                                                       <div class="row mb-3">
+                                                            <label class="col-sm-2 col-form-label"
+                                                                 for="basic-default-name">Select Movie</label>
+                                                            <div class="col-sm-10">
+                                                                 <select name="movieId" id="movieId"
+                                                                      onchange="return getMall()" class="form-control"
+                                                                      >
+                                                                      <option value="">Select Movie Name </option>
+                                                                      <% for(var i of movie) { %>
+                                                                           <option value="<%= i.id %>">
+                                                                                <%= i.title %>
+                                                                           </option>
+                                                                           <% } %>
+                                                                 </select>
+                                                            </div>
+                                                       </div>
+                                                       <div class="row mb-3">
+                                                            <label class="col-sm-2 col-form-label"
+                                                                 for="basic-default-name">Select Mall</label>
+                                                            <div class="col-sm-10">
+                                                                 <select name="mallId" id="mallId" class="form-control"
+                                                                      >
+                                                                      <option value="">Select Mall Name</option>
+                                                                 </select>
+                                                            </div>
+                                                       </div>
+                                                       <% var qulity_=['2D', '3D' , '4K']; %>
+                                                       <div class="row mb-3 ">
+                                                            <label class="col-sm-2 col-form-label" for="basic-default-name">Qulity</label>
+                                                            <div class="col-sm-10">
+                                                                 <select name="qulity" id="qulity" style="background: transparent;" class="form-control">
+                                                                      <option value="">Select Qulity</option>
+                                                                      <% qulity_.forEach((v, i)=> { %>
+                                                                           <option value="<%= v %>"><%= v %>
+                                                                           </option>
+                                                                           <% }); %>
+                                                                 </select>
+                                                            </div>
+                                                       </div>
+                                                       <div class="row mb-3">
+                                                            <label class="col-sm-2 col-form-label"
+                                                                 for="basic-default-name">Enter Show Time</label>
+                                                            <div class="col-sm-10">
+                                                                 <input type="text" class="form-control "
+                                                                      style="box-shadow: none; width: 30%;"
+                                                                      placeholder="Show Time" name="show_time">
+                                                            </div>
+                                                       </div>
+                                                       <div class="row mb-3">
+                                                            <label class="col-sm-2 col-form-label"
+                                                                 for="basic-default-name">Enter Show Price</label>
+                                                            <div class="col-sm-10">
+                                                                 <input type="text" class="form-control "
+                                                                      style="box-shadow: none; width: 30%;"
+                                                                      placeholder="Show Price" name="show_price">
+                                                            </div>
+                                                       </div>
+                                                       <div class="row justify-content-end">
+                                                            <div class="col-sm-10">
+                                                                 <input type="submit" class="btn btn-primary"
+                                                                      value="Submit">
+                                                            </div>
+                                                       </div>
+                                                  </form>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <script>
+                              function getMall() {
+                                   var id = document.getElementById('movieId').value;
+                                   $.ajax({
+                                        url: "/plan/get_mallOption",
+                                        type: "post",
+                                        data: {
+                                             Id: id
+                                        },
+                                        success: function (res) {
+                                             $('#mallId').html(res);
+                                        }
+                                   });
+                              }
+                         </script>
+                         <%-include('footer')%>

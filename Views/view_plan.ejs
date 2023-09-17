@@ -1,0 +1,97 @@
+<%-include('header')%>
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <!-- Basic Bootstrap Table -->
+              <div class="card">
+                <h5 class="card-header">View Plan List</h5>
+                  <% if(flash.success && flash.success.length> 0 ) { %>
+                    <div class="alert alert-success">
+                         <%= flash.success %>
+                    </div>
+                    <% } %>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Movie Name</th>
+                        <th>Mall</th>
+                        <th>Show Time</th>
+                        <th>Qulity</th>
+                        <th>Show Price</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      <%for(var i of activedata){%>
+                      <tr>
+                        
+                        <td><%=i.movieId.title%></td>
+                        <td><%=i.mallId.mall%></td>
+                        <td><%=i.show_time%></td>
+                        <td><%=i.qulity%></td>
+                        <td><%=i.show_price%> ₹</td>
+                        <td>
+                          <% if(i.status==true) { %>
+                               <a
+                                    href="/plan/Deactive/<%= i.id %>">Active</a>
+                               <% } else { %>
+                                    <a
+                                         href="/plan/Active/<%=i.id %>">Deactive</a>
+                                    <% } %>
+                     </td>
+                       
+                        <td>
+                          <a href="/plan/delete_plan/<%=i.id%>" class="btn btn-danger">Delete</a>
+                          <a href="/plan/update_plan/<%=i.id%>" class="btn btn-primary">Update</a>
+                        </td>
+                      </tr>
+                      <%}%>
+                    </tbody>
+                  </table>
+                  <br><br>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Movie Name</th>
+                        <th>Mall</th>
+                        <th>Show Time</th>
+                        <th>Qulity</th>
+                        <th>Show Price</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      <%for(var i of deactivedata){%>
+                      <tr>
+                        
+                        <td><%=i.movieId.title%></td>
+                        <td><%=i.mallId.mall%></td>
+                        <td><%=i.show_time%></td>
+                        <td><%=i.qulity%></td>
+                        <td><%=i.show_price%> ₹</td>
+                        <td>
+                          <% if(i.status==true) { %>
+                               <a
+                                    href="/plan/Deactive/<%= i.id %>">Active</a>
+                               <% } else { %>
+                                    <a
+                                         href="/plan/Active/<%=i.id %>">Deactive</a>
+                                    <% } %>
+                     </td>
+                       
+                        <td>
+                          <a href="/plan/delete_plan/<%=i.id%>" class="btn btn-danger">Delete</a>
+                          <a href="/plan/update_plan/<%=i.id%>" class="btn btn-primary">Update</a>
+                        </td>
+                      </tr>
+                      <%}%>
+                    </tbody>
+                  </table>
+              </div>
+              <br>
+              <br>
+<%-include('footer')%>

@@ -1,0 +1,64 @@
+<%-include('header')%>
+
+
+    <!-- / Navbar -->
+
+    <!-- Content wrapper -->
+    <div class="content-wrapper">
+        <!-- Content -->
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Add Movies</h4>
+
+            <!-- Basic Layout & Basic with Icons -->
+            <div class="row">
+                <!-- Basic Layout -->
+                <div class="col-xxl">
+                    <div class="card mb-4">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                        </div>
+                        <div class="card-body">
+                            <form action="/movie_mall/edit_moviemall" method="post">
+                                <input type="hidden" value="<%=movieMall.id%>" name="Id" id="">
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="basic-default-name">Select Movie</label>
+                                    <div class="col-sm-10">
+                                        <select name="movieId" class="form-control"
+                                            style="box-shadow: none; width: 30%;">
+                                            <option value="">-- Select Movie Name -- </option>
+                                            <% for(var i of movie) { %>
+                                                <option value="<%= i.id %>" <% if(i.id=movieMall.movieId.id) { %>
+                                                    <%= "selected" %>
+                                                        <% } %>><%= i.title %>
+                                                </option>
+                                                <% } %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="basic-default-company">Select
+                                        Mall</label>
+                                    <div class="col-sm-10">
+                                        <% mall.forEach((v, i)=> { %>
+                                            <div class="mx-4"><input type="checkbox" class="border-0 me-2"
+                                                    style="box-shadow: none;" placeholder="Movie Language" name="mallId"
+                                                    value="<%= v.id %>" <% for(var o=0; o < movieMall.mallId.length ;
+                                                    o++) { if(v.id==movieMall.mallId[o]) { %>
+                                                <%= "checked" %>
+                                                    <% }} %> >&nbsp; <%= v.mall %>
+                                            </div>
+                                            <% }) %>
+                                    </div>
+                                </div>
+
+
+                                <div class="row justify-content-end">
+                                    <div class="col-sm-10">
+                                        <input type="submit" class="btn btn-primary" value="Submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <%-include('footer')%>

@@ -1,0 +1,11 @@
+const express = require('express')
+const routs = express.Router()
+const passport = require('passport')
+const movie_mallController = require('../../Controller/AdminController/movie_mall_controller')
+routs.get('/add_moviemall',passport.checkAuthentication,movie_mallController.add_moviemall)
+routs.post('/insert_moviemall',passport.checkAuthentication,movie_mallController.insert_moviemall)
+routs.get('/view_moviemall',passport.checkAuthentication,movie_mallController.view_moviemall)
+routs.get('/delete_moviemall/:id',movie_mallController.delete_moviemall)
+routs.get('/update_moviemall/:id',passport.checkAuthentication,movie_mallController.update_moviemall)
+routs.post('/edit_moviemall',passport.checkAuthentication,movie_mallController.edit_moviemall)
+module.exports = routs

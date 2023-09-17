@@ -1,0 +1,111 @@
+<%-include('header')%>
+
+
+     <!-- / Navbar -->
+
+     <!-- Content wrapper -->
+     <div class="content-wrapper">
+          <!-- Content -->
+
+          <div class="container-xxl flex-grow-1 container-p-y">
+               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Add Movies</h4>
+
+               <!-- Basic Layout & Basic with Icons -->
+               <div class="row">
+                    <!-- Basic Layout -->
+                    <div class="col-xxl">
+                         <div class="card mb-4">
+                              <div class="card-header d-flex align-items-center justify-content-between">
+                              </div>
+                              <div class="card-body">
+                                   <form action="/movies/edit_movie" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" value="<%=movies.id%>" name="Id" id="">
+                                        <div class="row mb-3">
+                                             <label class="col-sm-2 col-form-label"
+                                                  for="basic-default-name">Title</label>
+                                             <div class="col-sm-10">
+                                                  <input type="text" class="form-control" id="basic-default-name"
+                                                       value="<%=movies.title%>" name="title"
+                                                       placeholder="Movie Title" />
+                                             </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                             <label class="col-sm-2 col-form-label"
+                                                  for="basic-default-company">Year</label>
+                                             <div class="col-sm-10">
+                                                  <input type="text" class="form-control" id="basic-default-company"
+                                                       name="year" value="<%=movies.year%>"
+                                                       placeholder="Movies Release Year" />
+                                             </div>
+                                        </div>
+                                        <% var genr=['Action', 'Adventure' , 'Comedy' , 'Drama' , 'Fantasy'
+                                             ,'Horror','Mystery','Romance','Science Fiction','Sports','Thriller']; %>
+                                             <div class="align-items-center row mb-3">
+                                                  <label class="col-sm-2 col-form-label"
+                                                       for="basic-default-company">genre</label>
+                                                  <div class="col-sm-10">
+                                                       <% genr.forEach((v)=> { %>
+                                                            <input type="checkbox"  name="genre[]"  id="basic-default-company"
+                                                                 value="<%=v%>"  <% for(var o = 0; o < movies.genre.length; o++){ if(v == movies.genre[o] ) {%> <%="checked"%>  <%}}%> />
+                                                                      <%=v%>&nbsp; &nbsp;
+                                                                           <% }); %>
+                                                  </div>
+                                             </div>
+                                             <div class="row mb-3">
+                                                  <label class="col-sm-2 col-form-label"
+                                                       for="basic-default-company">IMDB Rating</label>
+                                                  <div class="col-sm-10">
+                                                       <input type="text" class="form-control"
+                                                            id="basic-default-company" value="<%=movies.imdb%>" name="imdb"
+                                                            placeholder="IMDB Rating" />
+                                                  </div>
+                                             </div>
+                                             <div class="row mb-3">
+                                                  <label class="col-sm-2 col-form-label"
+                                                       for="basic-default-company">Release Date</label>
+                                                  <div class="col-sm-10">
+                                                       <input type="date" class="form-control"
+                                                            id="basic-default-company" value="<%=movies.rel_date%>" name="rel_date" />
+                                                  </div>
+                                             </div>
+                                             <div class="row mb-3">
+                                                  <label class="col-sm-2 col-form-label"
+                                                       for="basic-default-company">POSTER</label>
+                                                  <div class="col-sm-10">
+                                                       <input type="file" class="form-control"
+                                                            id="basic-default-company" name="poster" />
+                                                  </div>
+                                             </div>
+                                             <% var language_=['Gujrati', 'Hindi' , 'English' , 'Telugu' , 'Spanish' ];
+                                                  %>
+                                                  <div class="align-items-center row mb-3">
+                                                       <label class="col-sm-2 col-form-label"
+                                                            for="basic-default-company">Language</label>
+                                                       <div class="col-sm-10">
+                                                            <% language_.forEach((v)=> { %>
+                                                                 <input type="checkbox" id="basic-default-company"
+                                                                      value="<%=v%>" <% for(var o = 0; o < movies.language.length; o++){ if(v == movies.language[o] ) {%> <%="checked"%>  <%}}%> />
+                                                                 <%=v%>&nbsp; &nbsp;
+                                                                      <% }); %>
+                                                       </div>
+                                                  </div>
+                                                  <div class="row mb-3">
+                                                       <label class="col-sm-2 col-form-label"
+                                                            for="basic-default-company">Country</label>
+                                                       <div class="col-sm-10">
+                                                            <input type="text" class="form-control"
+                                                                 id="basic-default-company" value="<%=movies.country%>" name="country"
+                                                                 placeholder="Country" />
+                                                       </div>
+                                                  </div>
+
+                                                  <div class="row justify-content-end">
+                                                       <div class="col-sm-10">
+                                                            <input type="submit" class="btn btn-primary" value="Submit">
+                                                       </div>
+                                                  </div>
+                                   </form>
+                              </div>
+                         </div>
+                    </div>
+                    <%-include('footer')%>

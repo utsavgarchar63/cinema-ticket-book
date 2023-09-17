@@ -1,0 +1,226 @@
+<style>
+  body {
+    background-color: black;
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-weight: 600;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .ticket {
+    width: 400px;
+    height: 775px;
+    background-color: white;
+    margin: 25px auto;
+    position: relative;
+  }
+
+  .holes-top {
+    height: 50px;
+    width: 50px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    margin-left: -25px;
+    top: -25px;
+  }
+
+  .holes-top:before,
+  .holes-top:after {
+    content: "";
+    height: 50px;
+    width: 50px;
+    background-color: black;
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .holes-top:before {
+    left: -200px;
+  }
+
+  .holes-top:after {
+    left: 200px;
+  }
+
+  .holes-lower {
+    position: relative;
+    margin: 25px;
+    border: 1px dashed #000000;
+  }
+
+  .holes-lower:before,
+  .holes-lower:after {
+    content: "";
+    height: 50px;
+    width: 50px;
+    background-color: black;
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .holes-lower:before {
+    top: -25px;
+    left: -50px;
+  }
+
+  .holes-lower:after {
+    top: -25px;
+    left: 350px;
+  }
+
+  .title {
+    padding: 50px 25px 10px;
+  }
+
+  .cinema {
+    color: #aaa;
+    font-size: 22px;
+  }
+
+  .movie-title {
+    font-size: 50px;
+  }
+
+  .info {
+    padding: 15px 25px;
+  }
+
+  table {
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  table tr {
+    margin-bottom: 10px;
+  }
+
+  table th {
+    text-align: left;
+  }
+
+  table th:nth-of-type(1) {
+    width: 38%;
+  }
+
+  table th:nth-of-type(2) {
+    width: 40%;
+  }
+
+  table th:nth-of-type(3) {
+    width: 15%;
+  }
+
+  table td {
+    width: 33%;
+    font-size: 32px;
+  }
+
+  .bigger {
+    font-size: 48px;
+  }
+
+  .serial {
+    padding: 25px;
+  }
+
+  .serial table {
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+
+  .serial td {
+    width: 3px;
+    height: 50px;
+  }
+
+  .numbers td {
+    font-size: 16px;
+    text-align: center;
+  }
+</style>
+<!--
+Inspired by: https://dribbble.com/shots/1166639-Movie-Ticket/attachments/152161
+-->
+<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700" rel="stylesheet">
+
+<div class="ticket">
+  <div class="holes-top"></div>
+  <div class="title">
+    <p class="cinema">ENTERTAIN CINEMA PRESENTS</p>
+    <p class="movie-title">
+      <%=movie.title%>
+    </p>
+  </div>
+  <div class="poster">
+
+    <img src="" id="poster" style="height: 300px; width: 100%; object-fit: cover;" alt="Movie: Only God Forgives" />
+  </div>
+  <div class="info">
+    <table>
+      <tr>
+        <th>SCREEN</th>
+        <th>ROW</th>
+        <th>SEAT</th>
+      </tr>
+      <tr>
+        <td class="bigger">18</td>
+        <td class="bigger">H</td>
+        <td class="bigger">
+          <%=ticket_.sheets%>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <th>PRICE</th>
+        <th>DATE</th>
+        <th>TIME</th>
+      </tr>
+      <tr>
+        <td>
+          <%=ticket_.total%>₹
+        </td>
+        <td>
+          <%=date%>
+        </td>
+        <td>
+          <%=plan.show_time%>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="holes-lower"></div>
+
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+  var code = '11010010000100111011001011101111011010001110101110011001101110010010111101110111001011001001000011011000111010110001001110111101101001011010111000101101'
+
+  table = $('.barcode tr');
+  for (var i = 0; i < code.length; i++) {
+    if (code[i] == 1) {
+      table.append('<td bgcolor="black">')
+    } else {
+      table.append('<td bgcolor="white">')
+    }
+  }
+</script>
+<script>
+  const onlinePath = "<%=movie.posterlink%>";
+  const offlinePath = "<%=movie.poster%>";
+  const img = document.getElementById("poster");
+
+  
+if (navigator.onLine) { // Check if the user is online
+  img.src = onlinePath;
+} else {
+  img.src = offlinePath;
+}
+</script>

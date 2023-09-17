@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Entertain Pro</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/global.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?bxmily=Lato&display=swap" rel="stylesheet">
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet"> -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+</head>
+    
+<style>
+    body{
+        font-family: poppins,sans-serif;
+        background-color: black;
+    }
+    .banner-meta ul li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        margin-right: 18px;
+    }
+    .banner-meta ul li.quality > span {
+        font-size: 11px;
+        text-transform: uppercase;
+        color: #21232b;
+        background: #fff;
+        font-weight: 700;
+        padding: 7px 11px;
+        line-height: 1;
+    }
+    .banner-meta ul li.quality > span {
+        font-size: 11px;
+        text-transform: uppercase;
+        color: #21232b;
+        background: #fff;
+        font-weight: 700;
+        padding: 7px 11px;
+        line-height: 1;
+    }
+    .banner-meta ul li.quality > span:last-child {
+        background: transparent;
+        color: #fff;
+        margin-left: 9px;
+        border: 2px solid #fff;
+        padding: 5px 10px;
+    }
+    .banner-meta ul li.category > a {
+        font-size: 14px;
+        font-weight: 500;
+        color: #e3dfdf;
+    }
+    .banner-meta ul li.release-time > span {
+        font-size: 14px;
+        font-weight: 500;
+        color: #e3dfdf;
+    }
+    .banner-meta ul li.release-time > span > i {
+        font-size: 12px;
+        margin-right: 5px;
+        color: #ff4444;
+    }
+    .banner-meta ul li.release-time > span + span {
+        margin-left: 15px;
+    }
+    .banner-meta ul li.release-time > span {
+        font-size: 14px;
+        font-weight: 500;
+        color: #e3dfdf;
+    }
+    p {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 26px;
+        color: #bcbcbc;
+        margin-bottom: 15px;
+    }
+    .movie-details-prime ul {
+        display: flex;
+        align-items: center;
+        max-width: 475px;
+        background: #242c38;
+        border-radius: 4px;
+        border: 1px solid #343434;
+        padding: 0px 25px 25px;
+        margin-top: 35px;
+        flex-wrap: wrap;
+    }
+    .movie-details-prime ul li.share {
+        padding-right: 25px;
+        margin-right: 25px;
+        position: relative;
+        text-align: center;
+    }
+    .movie-details-prime ul li.watch {
+        margin-left: auto;
+    }
+    .movie-details-prime ul li {
+        margin-top: 25px;
+    }
+    .movie-details-prime ul li.watch .btnn {
+        font-size: 14px;
+        padding: 13px 26px;
+        letter-spacing: 0;
+        background: transparent;
+        border: 2px solid #ff4444   ;
+        border-radius: 25px;
+        transition: 0.4s all;
+    }
+    .movie-details-prime ul li.watch .btnn:hover {
+        background: #ff4444 ;
+        color: #000;
+        border: 2px solid #ff4444   ;
+    }
+    li{
+        list-style: none;
+    }
+    .btnn > i {
+        margin-right: 7px;
+    }
+    .fa {
+        font-weight: 900;
+    }
+    .movie-details-prime ul li.share::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 56px;
+        background: #fff;
+        opacity: .15;
+    }
+    .movie-details-prime ul li.share a i {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 16px;
+        color: #fff;
+    }
+    .movie-details-prime ul li.share a {
+        display: block;
+        color: #bcbcbc;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .movie-details-prime ul li.streaming h6 {
+        font-size: 16px;
+        margin-bottom: 5px;
+        font-weight: 800;
+        color: #fff;
+    }
+    .movie-details-prime ul li.streaming span {
+        display: block;
+        color: #bcbcbc;
+        font-size: 14px;
+    }
+    .container-xxl {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+    .movie-details-btn .download-btn {
+        background: #ff4444 ;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 500;
+        color: #14141d;
+        letter-spacing: 5px;
+        position: absolute;
+        bottom: 65px;
+        right: -50px;
+        transform: rotate(90deg);
+        padding: 43px 49px;
+        border-radius: 6px;
+    }
+    .download-btn img {
+        max-width: 24px;
+        transform: rotate(-90deg);
+    }
+</style>
+</style>
+<section id="header">
+    <div id="signup-modal" class="modal bxde" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            
+        </div><!-- /.modal-dialog -->
+    </div>
+    <nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-4 p-0 fw-bold text-white text-uppercase" href="index.html"><i
+                    class="bx bx-video-camera me-1 col_light fs-1 align-middle"></i> Entertain Pro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="bxlse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="bxlse">
+                            Blog
+                        </a>
+                        <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="blog.html"> Blog</a></li>
+                            <li><a class="dropdown-item border-0" href="blog_detail.html"> Blog Detail</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="event.html">Events</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html">team</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav mb-0 ms-auto">
+
+                    <li class="nav-item">
+                        <select  name="categories" class="form-select bg-light" required="">
+                            <option value="">All Categories</option>
+                            <option>Movie</option>
+                            <option>Video</option>
+                            <option>Tv-Show</option>
+                            <option>Music</option>
+                        </select>
+
+                        <div class="input-group " >
+                            <input type="text" style="border-radius:0 10px 10px 0;" class="form-control border-start-0" placeholder="Search Movie">
+                        </div>
+                    </li>
+
+                   
+                    <!-- /.modal -->
+                </ul>
+                
+
+    </nav>
+</section>
+<div class="container-xxl py-5">
+    <div class="row align-items-center position-relative mt-5 py-5">
+        <div class="col-lg-3">
+            <img src="<%= detail.poster %>" class="rounded" width="100%">
+        </div>
+        <div class="col-lg-6">
+            <div class="content">
+                <!-- <h5 style="font-size: 26px; margin-bottom: 10px; color: #ff4444    ; font-weight: 700;">New Movie</h5> -->
+                <h1 class="text-white display-4" style="letter-spacing: 8px; font-weight: 800;"><%= detail.title %></h1>
+                <div class="banner-meta py-3">
+                    <ul class="d-flex flex-wrap">
+                        <li class="quality" style="margin-right: 9px;">
+                            <span>IMDB  <%=detail.imdb%>/10</span>
+                        </li>
+                        <li class="quality">
+                            <span><%= detail.language %></span>
+                            <span class="d-none"></span>
+                        </li>
+                    </ul>
+                    <ul class="d-flex flex-wrap">
+                        <li class="category">
+                            <a href="#" style="text-transform: capitalize; letter-spacing: 2px;"><%= detail.genre %> </a>
+                        </li>
+                        <li class="release-time">
+                            <span><i class="fa fa-calendar"></i> <%= detail.year %></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="movie-details-prime">
+                    <ul>
+                        <li class="share"><a href="#"><i class="icon-share-alt"></i> Share</a></li>
+                        <li class="streaming">
+                            <h6><%= detail.movie_streaming_chanel %></h6>
+                            <span>Streaming Channels</span>
+                        </li>
+                        <li class="watch "><a href="/book_now/<%= detail.id %>" class="btnn popup-video text-light"><i class="fa fa-play"></i> Book Tickets</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="movie-details-btn">
+            <a href="<%=detail.poster%>" class="download-btn">Download Now <img src="/img/download.svg" alt=""></a>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>

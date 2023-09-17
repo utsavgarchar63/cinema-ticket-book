@@ -1,0 +1,72 @@
+<%-include('header')%>
+     <form action="/editprofile" class="d-flex" enctype="multipart/form-data" method="post">
+          <input type="hidden" name="Id" value="<%=p_data.id%>" id="">
+          <div>
+               <label for="avatar" style="width: 250px; position: relative; cursor: pointer;">
+                    <h1
+                         style="position: absolute; right: 50%; top: 50%; z-index: 1; color: white; transform: translate(50%,-50%); font-size: 80px;">
+                         +</h1>
+                    <img style="opacity: 0.8;" class="rounded-circle p-4" src="/img/avatars/undraw_profile_2.svg"
+                         alt="...">
+                    <input id="avatar" style="display: none;" type="file" name="avatar">
+               </label>
+          </div>
+          <div class="p-5 w-100">
+               <h3>Update Your Profile</h3>
+               <br>
+               <div class="row mb-3 align-items-center">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
+                    <div class="col-sm-10">
+                         <input type="text" class="form-control" style="background: transparent;"
+                              id="basic-default-name"value="<%=p_data.name%>" name="name" placeholder="Enter Your Name" />
+                    </div>
+               </div>
+               <div class="row mb-3 align-items-center">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">Email</label>
+                    <div class="col-sm-10">
+                         <input type="text" class="form-control" style="background: transparent;"
+                              id="basic-default-name" name="email" value="<%=p_data.email%>" placeholder="Enter Your Email" />
+                    </div>
+               </div>
+               <div class="row mb-3 align-items-center">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">Age</label>
+                    <div class="col-sm-10">
+                         <input type="text" class="form-control" style="background: transparent;"
+                              id="basic-default-name" name="age" value="<%=p_data.age%>" placeholder="Enter Your Age" />
+                    </div>
+               </div>
+               <div class="row mb-3 align-items-center">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">Gender</label>
+                    <div class="col-sm-10">
+                         <input type="radio" name="gender" id="gender" value="male" <%
+                                                  if(p_data.gender=="male" ) { %>
+                                             <%= "checked" %>
+                                                  <% } %> /> Male  &nbsp;
+                                                       <input type="radio" name="gender" id="gender" value="female" <%
+                                                            if(p_data.gender=="female" ) { %>
+                                                       <%= "checked" %>
+                                                            <% } %>/> Female
+                    </div>
+               </div>
+               <% var city=['Surat', 'Dang' , 'Vadodara' , 'Navasari' ]; %>
+
+               <div class="row mb-3 align-items-center">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">City</label>
+                    <div class="col-sm-10">
+                         <select name="city" id="city" style="background: transparent;" class="form-control">
+                              <option value="">Select City</option>
+                              <% city.forEach((v, i)=> { %>
+                                   <option value="<%= v %>" <% if(p_data.city==v) { %>
+                                        <%= "selected" %>
+                                             <% } %>><%= v %>
+                                   </option>
+                                   <% }); %>
+                         </select>
+                    </div>
+               </div>
+               <input type="submit"
+               class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm p-2" value="Edit Profile"></input>
+
+          </div>
+     </form>
+     <%-include('footer')%>

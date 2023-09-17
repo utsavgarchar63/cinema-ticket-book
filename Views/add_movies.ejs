@@ -1,0 +1,114 @@
+<%-include('header')%>
+
+
+    <!-- / Navbar -->
+
+    <!-- Content wrapper -->
+    <div class="content-wrapper">
+      <!-- Content -->
+
+      <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Add Movies</h4>
+
+        <!-- Basic Layout & Basic with Icons -->
+        <div class="row">
+          <!-- Basic Layout -->
+          <div class="col-xxl">
+            <div class="card mb-4">
+              <div class="card-header d-flex align-items-center justify-content-between">
+              </div>
+              <div class="card-body">
+                 <% if(flash.success && flash.success.length> 0 ) { %>
+          <div class="alert alert-success">
+               <%= flash.success %>
+          </div>
+          <% } %>
+                <form  action="/movies/insert_movies" method="post" enctype="multipart/form-data">
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">Title</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control"  onchange="return moviedetail()" id="moviename" name="title"
+                        placeholder="Movie Title" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-default-company">Year</label>
+                    <div class="col-sm-10">
+                      <input type="text"  class="form-control" id="basic-default-company" name="year"
+                        placeholder="Movies Release Year" />
+                    </div>
+                  </div>
+                  <% var genre=['Action', 'Adventure' , 'Comedy' , 'Drama' , 'Fantasy'
+                    ,'Horror','Mystery','Romance','Science Fiction','Sports','Thriller']; %>
+                    <div class="align-items-center row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-company">genre</label>
+                      <div class="col-sm-10">
+                        <% genre.forEach((v)=> { %>
+                          <input type="checkbox" id="basic-default-company" value="<%=v%>" name="genre[]" />
+                          <%=v%>&nbsp; &nbsp;
+                            <% }); %>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-company">IMDB Rating</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="basic-default-company" name="imdb"
+                          placeholder="IMDB Rating" />
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-company">Release Date</label>
+                      <div class="col-sm-10">
+                        <input type="date" class="form-control" id="basic-default-company" name="rel_date"
+                         />
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-company">POSTER</label>
+                      <div class="col-sm-10">
+                        <input type="file" class="form-control" id="basic-default-company" name="poster" />
+                      </div>
+                    </div>
+                    <% var language=['Gujrati', 'Hindi' , 'English' , 'Telugu' , 'Spanish' ]; %>
+                      <div class="align-items-center row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-company">Language</label>
+                        <div class="col-sm-10">
+                          <% language.forEach((v)=> { %>
+                            <input type="checkbox" id="basic-default-company" value="<%=v%>" name="language[]" />
+                            <%=v%>&nbsp; &nbsp;
+                              <% }); %>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-company">Country</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="basic-default-company" name="country"
+                            placeholder="Country" />
+                        </div>
+                      </div>
+                      <input type="text" name="posterlink" id="posterlink">
+                      <div class="row justify-content-end">
+                        <div class="col-sm-10">
+                          <input type="submit"  class="btn btn-primary" value="Submit">
+                        </div>
+                      </div>
+                </form>
+              </div>
+            </div>
+
+          <script>
+            function moviedetail(){
+                var moviename = document.getElementById('moviename').value
+                var url = "https://omdbapi.com/?t="+moviename+"&apikey=a17bc162"
+                $.ajax({
+                url : url,
+                type : 'get',
+                success : function(e){
+                    console.log(e.Poster)
+                    document.getElementById('posterlink').value = e.Poster
+                    console.log(e)
+                }
+            })
+            }
+        </script>
+          <%-include('footer')%>
