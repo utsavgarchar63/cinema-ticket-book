@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 8000;
-const mongoose = require('./config/mongoose')
+require('./config/mongoose')
 // const mongoose = require('mongoose')
 // mongoose.connect('mongodb+srv://utsavgarchar:utsavgarchar63@cluster0.wpvtcvx.mongodb.net',{
 //     useNewUrlParser : true,
