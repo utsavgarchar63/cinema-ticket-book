@@ -22,7 +22,7 @@ app.use('/assets/movies_poster',express.static(__dirname+'/assets/movies_poster'
 app.use('/assets/admin_avatar',express.static(__dirname+'/assets/admin_avatar'));
 const session = require('express-session')
 
-
+console.log("Hello");
 app.use(express.static('assets'))
 app.use(cookieParser());    
 app.use(express.urlencoded())
