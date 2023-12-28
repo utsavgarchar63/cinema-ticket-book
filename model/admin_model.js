@@ -43,3 +43,5 @@ adminSchema.statics.avatar_path ='/assets/admin_avatar'
 
 const admin = mongoose.model('admin',adminSchema)
 module.exports = admin
+
+https://drive.google.com/file/d/1g8z8wZCbX9oqHlzSbzyATpJOiVwtwAc8/view?usp=drivesdk
