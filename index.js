@@ -3,7 +3,7 @@ const app = express()
 const port = 8000;
 // require('./config/mongoose')
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://utsavgarchar:utsavgarchar63@cluster0.wpvtcvx.mongodb.net',{
+mongoose.connect('mongodb+srv://utsavgarchar:utsavgarchar63@cluster0.u6urkmb.mongodb.net',{
     useNewUrlParser : true,
     useUnifiedTopology : true
 }).then(()=>{

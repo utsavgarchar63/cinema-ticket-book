@@ -261,7 +261,7 @@
 <div class="container-xxl py-5">
     <div class="row align-items-center position-relative mt-5 py-5">
         <div class="col-lg-3">
-            <img src="<%= detail.poster %>" class="rounded" width="100%">
+            <img src="<%= detail.posterlink %>" class="rounded" width="100%">
         </div>
         <div class="col-lg-6">
             <div class="content">
@@ -298,8 +298,9 @@
                 </div>
             </div>
         </div>
+        
         <div class="movie-details-btn">
-            <a href="<%=detail.poster%>" class="download-btn">Download Now <img src="/img/download.svg" alt=""></a>
+            <a href="<%=detail.posterlink%>" class="download-btn">Download Now <img src="/img/download.svg" alt=""></a>
         </div>
     </div>
 </div>
